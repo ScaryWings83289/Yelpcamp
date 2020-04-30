@@ -19,15 +19,14 @@ var commentRoutes    = require("./routes/comments"),
 
 
 // mongoose.connect('mongodb://localhost/yelp_camp_v13', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.Promise = global.Promise;
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://ScaryWings83289:Divya%40123%24@cluster1-fkfi7.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true});
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+const databaseUri = process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp_v13';
+
+mongoose.connect(databaseUri, { useMongoClient: true })
+      .then(() => console.log(`Database connected`))
+      .catch(err => console.log(`Database connection error: ${err.message}`));
+
 
 
 app.use(bodyParser.urlencoded({extended: true}));

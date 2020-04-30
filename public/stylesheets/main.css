@@ -20,7 +20,7 @@
 
 .login
 {
-    margin-top: 13vh;
+    margin-top: 4vh;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -30,6 +30,15 @@
 .login1
 {
     margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.login2
+{
+    margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
     display: flex;

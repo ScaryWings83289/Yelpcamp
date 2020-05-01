@@ -17,16 +17,16 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index");
 
-console.log(process.env.DATABASEURL);
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
-// mongoose.Promise = global.Promise;
+// mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
-// const databaseUri = process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp_v13';
+mongoose.Promise = global.Promise;
+
+const databaseUri = process.env.DATABASEURL || 'mongodb://localhost/yelp_camp_v13';
 
 // const databaseUri = "mongodb+srv://ScaryWings83289:Divya123@cluster1-fkfi7.mongodb.net/test?retryWrites=true&w=majority";
-// mongoose.connect(databaseUri, { useMongoClient: true })
-//       .then(() => console.log(`Database connected`))
-//       .catch(err => console.log(`Database connection error: ${err.message}`));
+mongoose.connect(databaseUri, { useMongoClient: true })
+      .then(() => console.log(`Database connected`))
+      .catch(err => console.log(`Database connection error: ${err.message}`));
 
 
 app.use(bodyParser.urlencoded({extended: true}));
